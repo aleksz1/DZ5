@@ -1,10 +1,8 @@
-package Carwheel;
-
-import Cardoor.Carwheel;
+package Main;
 
 import java.util.ArrayList;
 
- class car {
+public class car {
     public String date;
     public String engine;
     public int topSpeed;
@@ -15,7 +13,7 @@ import java.util.ArrayList;
     public ArrayList<Integer> wheels;
     public int[] doors;
 
-    public car(String date, String engine, int topSpeed, int acceleration, int passengerCapacity, int numberPassengers, int currentSpeed) {
+    public car(String date, String engine, int topSpeed, int acceleration, int passengerCapacity, int numberPassengers, int currentSpeed,int doors[]) {
         this.date = date;
         this.engine = engine;
         this.topSpeed = topSpeed;
@@ -28,32 +26,34 @@ import java.util.ArrayList;
     }
 
     public car() {
-        date = "1.10.2017";
+
     }
-    public void setEngine(){
-
-        engine = "Electric";
+    public void setDate(String date){
+        this.date="1.10.2017";
     }
-    public void setTopSpeed(){
-
-        topSpeed = 240;
+    public void setEngine(String Engine){
+        this.engine = "Electric";
     }
-    public void setAcceleration(){
+    public void setTopSpeed(int topSpeed){
 
-        acceleration = 8;
+        this.topSpeed = topSpeed;
+    }
+    public void setAcceleration(int acceleration){
+
+        this.acceleration = acceleration;
     }
 
-    public void setPassengerCapacity(){
+    public void setPassengerCapacity(int passengerCapacity ){
 
-        passengerCapacity = 5;
+        this.passengerCapacity = passengerCapacity;
     }
-    public void setNumberPassengers(){
+    public void setNumberPassengers(int numberPassengers ){
 
-        numberPassengers = (int) (Math.random() * 6);
+        this.numberPassengers = (int) (Math.random() * 6);
     }
-    public void setCurrentSpeed(){
+    public void setCurrentSpeed(int currentSpeed){
 
-        currentSpeed = (int) (Math.random() * topSpeed);
+        this.currentSpeed = (int) (Math.random() * topSpeed);
     }
     public void setWheels(){
         wheels = new ArrayList<>();
@@ -77,18 +77,18 @@ import java.util.ArrayList;
     }
     public void ollPassenger(){
 
-        numberPassengers = 0;
+        this.numberPassengers = 0;
     }
     public void numDoors(){
 
         int numD = doors[(int) (Math.random() * 6)];
     }
-    private void RemoveWheels(){
+    public void RemoveWheels(){
         for (int i = 0; i < wheels.size(); i++){
             wheels.remove(i);
         }
     }
-    private void plasWils(){
+    public void plasWils(){
         for (int i = 0; i < (wheels.size() + (int) (Math.random() * 6)); i ++){
             wheels.add(i+1);
         }

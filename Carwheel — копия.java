@@ -1,4 +1,4 @@
-package Cardoor;
+package Main;
 
 public class Carwheel {
     private boolean wheel;
