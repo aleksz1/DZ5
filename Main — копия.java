@@ -10,8 +10,6 @@ public class Main {
         carDoor.console();
         Carwheel Carwheel = new Carwheel();
         Carwheel.console();
-        car car = new car();
-        car.console();
     }
 
     public static class CarDoor {
@@ -49,27 +47,9 @@ public class Main {
             System.out.println("Состояние шини-" + (wheelster ? "шина не стерта на 5%" : "шина стерта на 5%"));
         }
     }
-    public static class car {
-        public String date;
-        public String engine;
-        public int topSpeed;
-        public int acceleration;
-        public int passengerCapacity;
-        public int numberPassengers;
-        public int currentSpeed;
-        public ArrayList<Main> wheels;
-        public int[] doors;
-        public void console () {
-            System.out.println("дата производства - " + date);
-            System.out.println("тип двигателя - " + engine);
-            System.out.println("максимальная скорость машины - " + topSpeed);
-            System.out.println("время разгона до 100км/ч - " + acceleration);
-            System.out.println("пассажировместимость - " + passengerCapacity);
-            System.out.println("кол-во пасажиров внутри в данный момент - " + numberPassengers);
-            System.out.println("Текущая скорость-" + currentSpeed);
-        }
-    }
 }
+
+
 
 
 

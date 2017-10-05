@@ -1,100 +1,101 @@
 package Main;
 
 import java.util.ArrayList;
-
 public class car {
-    public String date;
-    public String engine;
-    public int topSpeed;
-    public int acceleration;
-    public int passengerCapacity;
-    public int numberPassengers;
-    public int currentSpeed;
-    public ArrayList<Integer> wheels;
-    public int[] doors;
-
-    public car(String date, String engine, int topSpeed, int acceleration, int passengerCapacity, int numberPassengers, int currentSpeed,int doors[]) {
-        this.date = date;
-        this.engine = engine;
-        this.topSpeed = topSpeed;
-        this.acceleration = acceleration;
-        this.passengerCapacity = passengerCapacity;
-        this.numberPassengers = numberPassengers;
-        this.currentSpeed = currentSpeed;
-        this.wheels = wheels;
-        this.doors = doors;
+    public static void main(String[] args) {
+        Car car = new Car(2017, 2, 140, 2, 6, 1, 60);
+        car.removeAllWheels();
+        car.addWheels(5);
+        car.getWheelAt(0);
+        car.landAllPassengers();
+        car.addPassenger();
+        car.showInfo();
     }
 
-    public car() {
+    static class Car {
+        private final int date;
+        private int engineType;
+        private float maxSpeed;
+        private float timeTo100KmPerHour;
+        private int maxNumberOfPassengers;
+        private int currentNumberOfPassengers;
+        private float currentSpeed;
+        private Cardoor[] doors = new Cardoor[4];
+        private Carwheel[] wheels = new Carwheel[4];
 
-    }
-    public void setDate(String date){
-        this.date="1.10.2017";
-    }
-    public void setEngine(String Engine){
-        this.engine = "Electric";
-    }
-    public void setTopSpeed(int topSpeed){
+        public Car(int date) {
+            this.date = date;
+        }
 
-        this.topSpeed = topSpeed;
-    }
-    public void setAcceleration(int acceleration){
+        public Car(int date, int engineType, float maxSpeed, float timeTo100KmPerHour, int maxNumberOfPassengers,
+                   int currentNumberOfPassengers, float currentSpeed) {
+            this.date = date;
+            this.engineType = engineType;
+            this.maxSpeed = maxSpeed;
+            this.timeTo100KmPerHour = timeTo100KmPerHour;
+            this.maxNumberOfPassengers = maxNumberOfPassengers;
+            this.currentNumberOfPassengers = currentNumberOfPassengers;
+            this.currentSpeed = currentSpeed;
 
-        this.acceleration = acceleration;
-    }
+            for (int i = 0; i < doors.length; i++) {
+                doors[i] = new Cardoor();
+                wheels[i] = new Carwheel();
+            }
+        }
 
-    public void setPassengerCapacity(int passengerCapacity ){
+        public void setCurrentSpeed(float currentSpeed) {
+            this.currentSpeed = currentSpeed;
+        }
 
-        this.passengerCapacity = passengerCapacity;
-    }
-    public void setNumberPassengers(int numberPassengers ){
+        public boolean addPassenger() {
+            if (currentNumberOfPassengers < maxNumberOfPassengers) {
+                currentNumberOfPassengers++;
+                return true;
+            }
+            return false;
+        }
 
-        this.numberPassengers = (int) (Math.random() * 6);
-    }
-    public void setCurrentSpeed(int currentSpeed){
+        public boolean landPassenger() {
+            if (currentNumberOfPassengers > 0) {
+                currentNumberOfPassengers--;
+                return true;
+            }
+            return false;
+        }
 
-        this.currentSpeed = (int) (Math.random() * topSpeed);
-    }
-    public void setWheels(){
-        wheels = new ArrayList<>();
-        for (int i = 0; i <= 4; i++){
-            wheels.add(i+1);
+        public void landAllPassengers() {
+            currentNumberOfPassengers = 0;
+        }
+
+        public Cardoor getDoorAt(int i) {
+            return doors[i];
+        }
+
+        public Carwheel getWheelAt(int i) {
+            return wheels[i];
+        }
+
+        public void removeAllWheels() {
+            wheels = new Carwheel[0];
+        }
+
+        public void addWheels(int x) {
+            int temp = wheels.length;
+            wheels = new Carwheel[temp + x];
+            for (int i = 0; i < wheels.length; i++) {
+                wheels[i] = new Carwheel();
+            }
+        }
+
+        public void showInfo() {
+            System.out.println("Date:             " + date);
+            System.out.println("Engine type:      " + engineType);
+            System.out.println("Max speed:        " + maxSpeed);
+            System.out.println("Time to 100 km/h: " + timeTo100KmPerHour);
+            System.out.println("Current speed:    " + currentSpeed);
+            System.out.println("Max number of passengers:     " + maxNumberOfPassengers);
+            System.out.println("Current number of passengers: " + currentNumberOfPassengers);
+
         }
     }
-    public void setDoors() {
-        doors = new int[5];
-        for (int i = 0; i < doors.length; i++) {
-            doors[i] = i + 1;
-        }
-    }
-    public void plusPassenger(){
-        numberPassengers ++;
-    }
-    public void minusPassenger() {
-        if (numberPassengers > 0) {
-            numberPassengers--;
-        }
-    }
-    public void ollPassenger(){
-
-        this.numberPassengers = 0;
-    }
-    public void numDoors(){
-
-        int numD = doors[(int) (Math.random() * 6)];
-    }
-    public void RemoveWheels(){
-        for (int i = 0; i < wheels.size(); i++){
-            wheels.remove(i);
-        }
-    }
-    public void plasWils(){
-        for (int i = 0; i < (wheels.size() + (int) (Math.random() * 6)); i ++){
-            wheels.add(i+1);
-        }
-        int sum = wheels.size();
-    }
-
-    }
-
-
+}
