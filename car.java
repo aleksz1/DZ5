@@ -1,18 +1,9 @@
 package Main;
 
 import java.util.ArrayList;
-public class car {
-    public static void main(String[] args) {
-        Car car = new Car(2017, 2, 140, 2, 6, 1, 60);
-        car.removeAllWheels();
-        car.addWheels(5);
-        car.getWheelAt(0);
-        car.landAllPassengers();
-        car.addPassenger();
-        car.showInfo();
-    }
 
-    static class Car {
+
+      public class car{
         private final int date;
         private int engineType;
         private float maxSpeed;
@@ -23,11 +14,11 @@ public class car {
         private Cardoor[] doors = new Cardoor[4];
         private Carwheel[] wheels = new Carwheel[4];
 
-        public Car(int date) {
+        public car(int date) {
             this.date = date;
         }
 
-        public Car(int date, int engineType, float maxSpeed, float timeTo100KmPerHour, int maxNumberOfPassengers,
+        public car(int date, int engineType, float maxSpeed, float timeTo100KmPerHour, int maxNumberOfPassengers,
                    int currentNumberOfPassengers, float currentSpeed) {
             this.date = date;
             this.engineType = engineType;
@@ -98,4 +89,3 @@ public class car {
 
         }
     }
-}
